@@ -6,7 +6,7 @@ data class Note(val title: String, val description: String, val type: Type){
     }
 }
 
-fun getList(quantity: Int = 10) : MutableList<Note>
+/*fun getList(quantity: Int = 10) : MutableList<Note>
 {
     val noteList = mutableListOf<Note>()
 
@@ -19,6 +19,14 @@ fun getList(quantity: Int = 10) : MutableList<Note>
     }
 
     return noteList
+}*/
+
+fun getList(quantity: Int = 10) = (1..quantity).map {
+    Note(
+        "t $it",
+        "desc",
+        if(it % 3 == 0) Note.Type.AUDIO else Note.Type.TEXT
+    )
 }
 
 fun main()
