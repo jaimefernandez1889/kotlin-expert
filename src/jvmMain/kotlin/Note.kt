@@ -1,18 +1,28 @@
+import kotlin.math.sign
+
 data class Note(val title: String, val description: String, val type: Type){
     enum class Type {
-        TEXT, AUDIO, VIDEO
+        TEXT, AUDIO
     }
 }
 
-val noteList = listOf(
-    Note("t1", "d1", Note.Type.TEXT),
-    Note("t2", "d2", Note.Type.AUDIO),
-    Note("t3", "d3", Note.Type.TEXT),
-    Note("t4", "d4", Note.Type.TEXT),
-    Note("t5", "d5", Note.Type.AUDIO),
-    Note("t6", "d6", Note.Type.TEXT),
-    Note("t7", "d7", Note.Type.TEXT),
-    Note("t8", "d8", Note.Type.AUDIO),
-    Note("t9", "d9", Note.Type.TEXT),
-    Note("t10", "d10", Note.Type.TEXT),
-)
+fun getList(quantity: Int = 10) : MutableList<Note>
+{
+    val noteList = mutableListOf<Note>()
+
+    for (i in 1..quantity){
+        val type = when {
+            i % 3 == 0 -> Note.Type.AUDIO
+            else -> Note.Type.TEXT
+        }
+        noteList.add(Note("t $i", "desc $i", type))
+    }
+
+    return noteList
+}
+
+fun main()
+{
+    val noteList = getList(15)
+    println(noteList)
+}
