@@ -54,14 +54,14 @@ fun App(appstate: AppState) {
 @Composable
 private fun NotesList(notes: List<Note>) {
     LazyColumn(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         items(notes) { note ->
             Card(
                 modifier = Modifier
-                    .fillMaxWidth(0.8F)
                     .padding(8.dp)
+                    .fillMaxWidth(0.8F)
             ) {
                 Column(
                     modifier = Modifier.padding(16.dp)
